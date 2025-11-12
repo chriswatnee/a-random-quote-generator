@@ -31,10 +31,12 @@ const quotes = [
 ];
 
 
-/***
- * `getRandomQuote` function
-***/
-
+// Function that returns random quote object
+function getRandomQuote() {
+  // Generates a random number ranging from zero to the index of the last item in the quotes array
+  const randomNum = Math.floor(Math.random() * quotes.length);
+  return quotes[randomNum];
+}
 
 
 /***
