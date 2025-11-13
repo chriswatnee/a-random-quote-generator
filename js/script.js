@@ -38,12 +38,27 @@ function getRandomQuote() {
   return quotes[randomNum];
 }
 
-
-/***
- * `printQuote` function
-***/
-
-
+// Function that displays a new quote
+function printQuote() {
+  // Get random quote
+  const quote = getRandomQuote();
+  // Store the HTML string of quote
+  let htmlStr = `
+    <p class="quote">${quote.quote}</p>
+    <p class="source">${quote.source}`;
+  // Add citation if one exists
+  if (quote.citation) {
+    htmlStr += `<span class="citation">${quote.citation}</span>`;
+  }
+  // Add year if one exists
+  if (quote.year) {
+    htmlStr += `<span class="year">${quote.year}</span>`;
+  }
+  // Close the p tag
+  htmlStr += "</p>";
+  // Update the HTML
+  document.getElementById('quote-box').innerHTML = htmlStr;
+}
 
 /***
  * click event listener for the print quote button
