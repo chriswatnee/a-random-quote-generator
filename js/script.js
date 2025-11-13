@@ -3,6 +3,9 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
+// Variable that stores the index of the current quote displaying
+let currentQuoteIndex;
+
 // An array of objects to store the quotes
 const quotes = [
   {
@@ -33,9 +36,14 @@ const quotes = [
 
 // Function that returns random quote object
 function getRandomQuote() {
-  // Generates a random number ranging from zero to the index of the last item in the quotes array
-  const randomNum = Math.floor(Math.random() * quotes.length);
-  return quotes[randomNum];
+  let randomIndex;
+  // Generate a randomIndex until it is different than currentQuoteIndex to prevent the same quote from displaying two times in a row
+  do {
+    // Generates a random number ranging from zero to the index of the last item in the quotes array
+    randomIndex = Math.floor(Math.random() * quotes.length);
+  } while (randomIndex === currentQuoteIndex);
+  currentQuoteIndex = randomIndex;
+  return quotes[randomIndex];
 }
 
 // Function that displays a new quote
